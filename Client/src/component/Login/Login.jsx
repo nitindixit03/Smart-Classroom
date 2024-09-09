@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptop, faPersonMilitaryToPerson, faBrain, faLightbulb} from '@fortawesome/free-solid-svg-icons';
+import {SignIn} from "@clerk/clerk-react"
 
 function Login() {
   return (
@@ -63,8 +64,45 @@ function Login() {
             </p>
           </div>
         </section>
+
+        <main
+          className="flex flex-col items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6 w-full"
+        >
+          <div className="max-w-xl lg:max-w-3xl">
+            <div className="relative -mt-16 block lg:hidden">
+              <a
+                className="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20 dark:bg-gray-900"
+                href="#"
+              >
+                <span className="sr-only">Home</span>
+                <svg
+                  className="h-8 sm:h-10"
+                  viewBox="0 0 28 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {/* SVG Content */}
+                </svg>
+              </a>
+
+              <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
+                Welcome to Squid 🦑
+              </h1>
+
+              <p className="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+            </div>
+
+            {/* Form Centering */}
+            <div className="flex justify-center items-center mt-8">
+              <SignIn />
+            </div>
+          </div>
+        </main>
       </div>
     </section>
+
   );
 }
 
