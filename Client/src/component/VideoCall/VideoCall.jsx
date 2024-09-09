@@ -9,12 +9,19 @@ import {
 } from "@livekit/components-react";
 import "@livekit/components-styles";
 import { Track } from "livekit-client";
+import { useLocation } from "react-router-dom";
 
 const serverUrl = 'wss://test-et22r9u8.livekit.cloud';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjU4MzkxNDQsImlzcyI6IkFQSTVVOUViS0xlcmN0ZiIsIm5iZiI6MTcyNTgzMTk0NCwic3ViIjoicXVpY2tzdGFydCB1c2VyIDFnZ3FvZSIsInZpZGVvIjp7ImNhblB1Ymxpc2giOnRydWUsImNhblB1Ymxpc2hEYXRhIjp0cnVlLCJjYW5TdWJzY3JpYmUiOnRydWUsInJvb20iOiJxdWlja3N0YXJ0IHJvb20iLCJyb29tSm9pbiI6dHJ1ZX19.m3gXET49alpOIIsIBBiPPILxydEd4qNDbySu3XsNrw8';
+// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjU4MzkxNDQsImlzcyI6IkFQSTVVOUViS0xlcmN0ZiIsIm5iZiI6MTcyNTgzMTk0NCwic3ViIjoicXVpY2tzdGFydCB1c2VyIDFnZ3FvZSIsInZpZGVvIjp7ImNhblB1Ymxpc2giOnRydWUsImNhblB1Ymxpc2hEYXRhIjp0cnVlLCJjYW5TdWJzY3JpYmUiOnRydWUsInJvb20iOiJxdWlja3N0YXJ0IHJvb20iLCJyb29tSm9pbiI6dHJ1ZX19.m3gXET49alpOIIsIBBiPPILxydEd4qNDbySu3XsNrw8';
 
 export default function Room() {
+
+
+  const location = useLocation();
+  const token = location.state.token;
+
   return (
+
     <LiveKitRoom
       video={true}
       audio={true}
@@ -31,6 +38,9 @@ export default function Room() {
       {/* Controls for the user to start/stop audio, video, and screen
       share tracks and to leave the room. */}
       <ControlBar />
+
+      {/* <Chat /> */}
+
     </LiveKitRoom>
   );
 }
