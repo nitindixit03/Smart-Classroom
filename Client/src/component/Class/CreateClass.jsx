@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faChalkboardTeacher, faBook, faClipboard } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { UserButton } from '@clerk/clerk-react';
 
 function CreateClass() {
     const [classCode, setClassCode] = useState('Nitin Dixit'); // Default code
@@ -20,7 +21,7 @@ function CreateClass() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-black">
-            
+            <UserButton/ >
             {/* Create A Class Header */}
             <h1 className="text-white text-4xl font-bold mb-12 text-center">Create A Class</h1>
 

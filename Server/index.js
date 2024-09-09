@@ -51,12 +51,7 @@ const createRoom = async (name) => {
   console.log('Room created', room); // Log inside to confirm room is created
   return room;
 
-
- 
 };
-
-
-
 
 app.get('/getToken', async (req, res) => {
 
@@ -72,13 +67,14 @@ app.post('/teacherSignUp', async(req, res) => {
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
+      role VARCHAR(10) NOT NULL,
       classes JSONB NULL
       )`
 
       await client.query(query);
 
-      const query2 = await client.query(`INSERT INTO teachers (name, email, classes) VALUES ($1, $2, $3) RETURNING *`,
-      [body.name, body.email, body.classes]);
+      const query2 = await client.query(`INSERT INTO teachers (name, email, role,  classes) VALUES ($1, $2, $3, $4) RETURNING *`,
+      [body.name, body.email, body.role, body.classes]);
       
       console.log(query2.rows[0].classes)
       res.status(200).send("table and record inserted in teacher table")
@@ -106,8 +102,8 @@ app.post('/studentSignUp', async(req, res) => {
 
       await client.query(query);
 
-      const query2 = await client.query(`INSERT INTO students (rollNumber, name, classes) VALUES ($1, $2, $3) RETURNING *`,
-      [body.rollNumber, body.name, body.classes]);
+      const query2 = await client.query(`INSERT INTO students (rollNumber, name, role, classes) VALUES ($1, $2, $3, $4) RETURNING *`,
+      [body.rollNumber, body.name, body.role, body.classes]);
       
       console.log(query2)
       console.log(query2.rows[0].classes)

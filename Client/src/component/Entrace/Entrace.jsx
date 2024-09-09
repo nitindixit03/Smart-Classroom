@@ -1,7 +1,39 @@
+// src/SplitPage.js
 import React from "react";
 import { Button } from "@nextui-org/react";
+import { UserIcon } from "../../Icons/Usericon";
+import { Protect, useAuth, useUser} from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 function SplitPage() {
+  const { isSignedIn } = useAuth();
+  const navigate = useNavigate();
+  if (!isSignedIn) {
+    navigate("/login");
+  }
+  const { user } = useUser();
+  const fullname = user.fullName;
+  const email = user.primaryEmailAddress.emailAddress;
+  
+
+  const Student = () => {
+    axios.post("/http:localhost:3000/studentSignUp/", {
+      name: fullname,
+      email: email,
+      role: "student"
+    })
+  }
+  
+  const Teacher = () => {
+    axios.post("/http:localhost:3000/teacherSignUp/", {
+      name: fullname,
+      email: email,
+      role: "teacher"
+    })
+  }
+
   return (
     <div className="flex h-screen">
       {/* Yellow Half */}
