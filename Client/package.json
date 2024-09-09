@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.7.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@livekit/components-react": "^2.4.3",
     "@livekit/components-styles": "^1.0.12",
     "@livekit/react-core": "^1.1.0",

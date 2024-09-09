@@ -1,8 +1,9 @@
-const { Client } = require("pg");
+import pkg from 'pg';
+const { Client } = pkg;
 
 const client = new Client({
-  user: "postgres",
-  password: "password",
+  user: "neil",
+  password: "kennys",
   host: "localhost",
   port: 5432,
   database: "classroom"
@@ -20,4 +21,4 @@ async function connectClient() {
 
 connectClient();
 
-module.exports = client;
+export default client;

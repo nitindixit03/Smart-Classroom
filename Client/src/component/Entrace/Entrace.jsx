@@ -1,28 +1,40 @@
-import React from "react";
+// src/SplitPage.js
+import React from 'react';
 import { Button } from "@nextui-org/react";
 import { UserIcon } from '../../Icons/UserIcon';
 
-export default function App() {
+function SplitPage() {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="flex gap-6">
-        <Button 
-          color="warning" 
-          variant="bordered" 
-          startContent={<UserIcon />} 
-          className="bg-yellow-500 border-yellow-500 hover:bg-yellow-600 text-white text-xl font-bold px-10 py-6 rounded-lg"
-        >
-          Student
-        </Button>
-        <Button 
-          color="success" 
-          variant="bordered" 
-          startContent={<UserIcon />} 
-          className="bg-green-500 border-green-500 hover:bg-green-600 text-white text-xl font-bold px-10 py-6 rounded-lg"
-        >
-          Teacher
-        </Button>
+    <div className="flex h-screen">
+      {/* Yellow Half */}
+      <div className="w-1/2 bg-yellow-500 flex items-center justify-center">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-96 h-96 flex flex-col items-center justify-center">
+          <img
+            src="/student.jpg"
+            alt="Student"
+            className="w-48 h-48 object-cover mb-4"
+          />
+          <Button color="warning" variant="bordered" startContent={<UserIcon />}>
+            Student
+          </Button>
+        </div>
+      </div>
+      
+      {/* Green Half */}
+      <div className="w-1/2 bg-green-500 flex items-center justify-center">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-96 h-96 flex flex-col items-center justify-center">
+          <img
+            src="/teacher.jpg"
+            alt="Teacher"
+            className="w-48 h-48 object-cover mb-4"
+          />
+          <Button color="success" variant="bordered" startContent={<UserIcon />}>
+            Teacher
+          </Button>
+        </div>
       </div>
     </div>
   );
 }
+
+export default SplitPage;
