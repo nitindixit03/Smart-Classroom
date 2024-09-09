@@ -7,6 +7,7 @@ export default function Lobby() {
     const navigate = useNavigate();
 
     const call = () => {
+        console.log("htf")
         axios.get("http://localhost:3000/getToken").then((res) => {
             navigate("/videocall", {state: {token: res.data}});
         });

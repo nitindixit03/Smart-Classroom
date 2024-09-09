@@ -12,6 +12,7 @@ import Student from "./component/Dashboard/Student.jsx"
 import { SignUp } from "@clerk/clerk-react"
 import Signup from "./component/Login/Signup.jsx"
 
+import Entrace from "./component/Entrace/Entrace.jsx"
 
 function App() {
 
