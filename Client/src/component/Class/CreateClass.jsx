@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faChalkboardTeacher, faBook, faClipboard } from '@fortawesome/free-solid-svg-icons';
 
 function CreateClass() {
     const [classCode, setClassCode] = useState('Nitin Dixit'); // Default code
@@ -26,34 +26,46 @@ function CreateClass() {
 
             {/* Input Fields */}
             <div className="w-full max-w-lg space-y-8">
-                {/* Class Name Input */}
-                <input
-                    type="text"
-                    className="w-full py-3 px-4 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter Class Name"
-                    value={className}
-                    onChange={(e) => setClassName(e.target.value)}
-                />
-                
-                {/* Subject Information Input */}
-                <input
-                    type="text"
-                    className="w-full py-3 px-4 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Enter Subject Information"
-                    value={subjectInfo}
-                    onChange={(e) => setSubjectInfo(e.target.value)}
-                />
+                {/* Class Name Input with Icon on the Left */}
+                <div className="relative">
+                    <FontAwesomeIcon 
+                        icon={faChalkboardTeacher} 
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    />
+                    <input
+                        type="text"
+                        className="w-full py-3 pl-12 pr-4 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Enter Class Name"
+                        value={className}
+                        onChange={(e) => setClassName(e.target.value)}
+                    />
+                </div>
+
+                {/* Subject Information Input with Icon on the Left */}
+                <div className="relative">
+                    <FontAwesomeIcon 
+                        icon={faBook} 
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    />
+                    <input
+                        type="text"
+                        className="w-full py-3 pl-12 pr-4 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="Enter Subject Information"
+                        value={subjectInfo}
+                        onChange={(e) => setSubjectInfo(e.target.value)}
+                    />
+                </div>
             </div>
 
             {/* Generate Random Code Button */}
             <button
-                className="w-full max-w-lg py-3 mt-20 bg-indigo-500 text-white font-semibold rounded-md hover:bg-indigo-600 transition-colors mb-4"
+                className="w-full max-w-lg py-3 mt-20 bg-indigo-500 text-white font-semibold rounded-md hover:bg-purple-600 transition-colors mb-4"
                 onClick={generateRandomCode}
             >
                 Generate Random Code
             </button>
 
-            {/* Class Code Display with Copy Button */}
+            {/* Class Code Display with Copy Button and Icon */}
             <div className="w-full max-w-lg mt-10 mb-10">
                 <div className="relative w-full">
                     <button
@@ -62,10 +74,14 @@ function CreateClass() {
                         {classCode}
                     </button>
                     <button
-                        className="absolute top-0 right-0 h-full px-4 bg-gray-300 text-gray-700 font-semibold rounded-r-md hover:bg-gray-400 transition-colors"
+                        className="absolute top-0 right-0 h-full px-4 bg-gray-300 text-black font-semibold rounded-r-md hover:bg-gray-400 transition-colors flex items-center"
                         onClick={copyToClipboard}
                     >
                         Copy
+                        <FontAwesomeIcon 
+                            icon={faClipboard} 
+                            className="ml-2.5 text-black"
+                        />
                     </button>
                 </div>
             </div>
@@ -78,4 +94,4 @@ function CreateClass() {
     );
 }
 
-export default CreateClass;
+export default CreateClass;

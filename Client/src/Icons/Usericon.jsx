@@ -1,11 +1,8 @@
 import React from "react";
+
 export const UserIcon = ({
   fill = 'currentColor',
-  filled,
-  size,
-  height,
-  width,
-  label,
+  size = 48, // Default size
   ...props
 }) => {
   return (
@@ -13,8 +10,8 @@ export const UserIcon = ({
       data-name="Iconly/Curved/Profile"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width={size || width || 24}
-      height={size || height || 24}
+      width={size}  // Use size prop for width
+      height={size} // Use size prop for height
       {...props}
     >
       <g

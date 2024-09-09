@@ -4,7 +4,7 @@ function Student() {
   const student = "Student Name";  // Replace with dynamic data if needed
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-4 bg-gray-100">
+    <div className="flex flex-col items-center min-h-screen p-4 bg-black">
       
       {/* Container for alignment */}
       <div className="w-full max-w-4xl">
