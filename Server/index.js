@@ -45,7 +45,7 @@ const createRoom = async (name) => {
 
 
 app.get('/getToken', async (req, res) => {
-
+  console.log('hit')
   res.send(await createToken());
 });
 
