@@ -1,7 +1,7 @@
 // src/SplitPage.js
 import React from 'react';
 import { Button } from "@nextui-org/react";
-import { UserIcon } from '../../Icons/UserIcon';
+import { UserIcon } from '../../Icons/Usericon';
 
 function SplitPage() {
   return (
