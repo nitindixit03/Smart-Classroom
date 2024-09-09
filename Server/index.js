@@ -2,10 +2,13 @@
 import express from 'express';
 import { AccessToken } from "livekit-server-sdk";
 import cors from 'cors';
+import client from './database/dbConnection.js';
 var totalUsers = [];
 
 const app = express();
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 const port = 3000;
   
 const createToken = async () => {
@@ -15,8 +18,6 @@ const createToken = async () => {
   if (totalUsers.length >= 2) {
     roomName = 'quickstart-room2';
   }
-  
-
   
   // Identifier to be used for participant.
     
@@ -41,13 +42,71 @@ const createRoom = async (name) => {
   }
 };
 
-
-
-
 app.get('/getToken', async (req, res) => {
 
   res.send(await createToken());
 });
+
+app.post('/teacherSignUp', async(req, res) => {
+  try{
+    const body = req.body;
+
+    if (body) {
+      const query = `CREATE TABLE IF NOT EXISTS teachers (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      classes JSONB NULL
+      )`
+
+      await client.query(query);
+
+      const query2 = await client.query(`INSERT INTO teachers (name, email, classes) VALUES ($1, $2, $3) RETURNING *`,
+      [body.name, body.email, body.classes]);
+      
+      console.log(query2.rows[0].classes)
+      res.status(200).send("table and record inserted in teacher table")
+      
+    }
+    else{
+      res.status(500).send("error occured");
+    }
+  }
+  catch(err) {
+    console.log(err)
+    res.status(500).send("error occured")
+  }
+})
+
+app.post('/studentSignUp', async(req, res) => {
+  try {
+    const body = req.body;
+    if (body) {
+      const query = `CREATE TABLE IF NOT EXISTS students (
+      rollNumber INT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      classes JSONB NULL
+      )`
+
+      await client.query(query);
+
+      const query2 = await client.query(`INSERT INTO students (rollNumber, name, classes) VALUES ($1, $2, $3) RETURNING *`,
+      [body.rollNumber, body.name, body.classes]);
+      
+      console.log(query2)
+      console.log(query2.rows[0].classes)
+      res.status(200).send("table and record inserted in student table")
+      
+    }
+    else{
+      res.status(500).send("error occured");
+    }
+  }
+  catch(err) {
+    console.log(err)
+    res.status(500).send("error occured")
+  }
+})
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)
