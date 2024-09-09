@@ -9,6 +9,8 @@ import Teacher from "./component/Dashboard/teacher.jsx"
 import JoinClass from "./component/Class/JoinClass.jsx"
 import CreateClass from "./component/Class/CreateClass.jsx"
 import Student from "./component/Dashboard/Student.jsx"
+import { SignUp } from "@clerk/clerk-react"
+import Signup from "./component/Login/Signup.jsx"
 
 
 function App() {
@@ -19,6 +21,9 @@ function App() {
 
         <Route path="/" element={<CreateClass />}/>
         <Route path="/videocall" element={<Room/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/entrance" element={<Entrace/>}/>
       </Routes>
     </BrowserRouter>
   )
